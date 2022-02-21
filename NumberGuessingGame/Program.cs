@@ -22,7 +22,18 @@ namespace NumberGuessingGame
             {
 
                 // need to alert user if string not a number
-                var result = guesser.MakeGuess(int.Parse(Console.ReadLine()));
+
+                var userInput = Console.ReadLine();
+
+                var isNumber = int.TryParse(userInput, out int guess);
+
+                if (isNumber == false)
+                {
+                    Console.WriteLine("That isnt a number, try again.");
+                    continue;
+                }
+
+                var result = guesser.MakeGuess(guess);
 
                 if (result == Result.Higher)
                 {

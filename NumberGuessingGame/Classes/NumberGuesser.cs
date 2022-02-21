@@ -27,8 +27,10 @@ namespace NumberGuessingGame.Classes
 
         public NumberGuesser()
         {
-            // sets winning number
+            // Creates a random object
             Random rand = new Random();
+
+            // Calls Next() on rand to generate a number between 1 - 10
             winningNumber = rand.Next(1, 11);
 
             // sets no of tries
@@ -37,8 +39,11 @@ namespace NumberGuessingGame.Classes
 
         public Result MakeGuess(int guess)
         {
+            // When caller makes a guess reduce the TotalGuesses by 1
+
             TotalGuesses--;
 
+            // return result
             if (guess == winningNumber)
                 return Result.Win;
 
@@ -48,6 +53,7 @@ namespace NumberGuessingGame.Classes
             if (guess < winningNumber && TotalGuesses > 0)
                 return Result.Lower;
 
+            // Returns lose if above conditions not met
             return Result.Lose;
         }
 
